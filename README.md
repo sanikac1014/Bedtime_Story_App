@@ -2,6 +2,8 @@
 
 An intelligent AI-powered bedtime story generator for children ages 5-10. Built with LangChain, LangGraph, and Streamlit, featuring age-adaptive content, chapter-based stories, interactive flipbook reading, and iterative quality assurance.
 
+**Quick demo:** Here is the quick demo to see the app: [Google Drive link](https://drive.google.com/file/d/1DaUsimEvePJTcQIEcVtAyVrvbVP3hg_T/view?usp=sharing).
+
 ## ✨ Key Features
 
 ### 🎯 Age-Adaptive Content
