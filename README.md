@@ -43,19 +43,6 @@ Stories are evaluated on 5 criteria (1-10 scale):
 
 **Pass Threshold**: Overall ≥ 8.0 AND Safety ≥ 9
 
-## 📋 Assignment Alignment
-
-This implementation addresses the assignment requirements as follows:
-
-| Requirement | Implementation |
-|-------------|-----------------|
-| **Ages 5–10** | Age bands 5–7 and 7–10 with tailored language and pacing in prompts and critic. |
-| **LLM Judge** | **Story Judge (Critic)** evaluates each story on 5 criteria (1–10); pass threshold (overall ≥ 8.0, safety ≥ 9) gates release; below threshold triggers **Improver** with judge feedback, then re-evaluation (loop). |
-| **Block diagram** | See *System block diagram* below: User → Classifier → Storyteller → Judge → [Improver loop] → Illustrator; prompts flow through each component. |
-| **OpenAI model** | All text agents use **GPT-3.5-Turbo** (unchanged); Gemini used only for image generation. |
-| **API key** | Stored in `.env`; `.gitignore` excludes `.env`; key never committed. |
-| **“Tell a story”** | Story arcs (5 or 7 chapters), six categories with tailored strategies, classifier routes requests; judge enforces quality and age-appropriacy. |
-
 *User feedback / request changes* is not in the current flow (improvement is judge-driven); listed under *Future scope* below.
 
 ## 🏗️ Architecture
@@ -64,28 +51,7 @@ This implementation addresses the assignment requirements as follows:
 
 The diagram below shows the flow of **prompts** and interaction between **User**, **Judge (Critic)**, **Storyteller**, and other components:
 
-```mermaid
-flowchart LR
-    subgraph User["👤 User"]
-        U[Story idea + settings]
-    end
-    
-    subgraph Pipeline["Pipeline"]
-        C[Classifier] -->|category prompt| D[Storyteller]
-        D -->|story prompt| E[Judge / Critic]
-        E -->|evaluation prompt| E
-        E -->|"score < 8?"| F[Improver]
-        F -->|improvement + judge feedback| D
-        E -->|"pass"| G[Illustrator]
-    end
-    
-    U -->|user_prompt| C
-    G -->|flipbook| Out[📖 Story output]
-```
-
 **Prompt flow in words:** User provides idea and settings → **Classifier** gets a category prompt and assigns a category → **Storyteller** gets a chaptered-story prompt (age, category, length) and generates the draft → **Judge (Critic)** gets an evaluation prompt and scores the story; if below threshold, **Improver** gets judge feedback and an improvement prompt, and the Storyteller is re-invoked with that feedback; when the Judge passes, **Illustrator** gets an image prompt per chapter and the final story is rendered.
-
-### Full workflow (detailed)
 
 ```mermaid
 flowchart TD
@@ -197,15 +163,6 @@ Open your browser to: http://localhost:8501
 │   └── config.toml            # Theme and settings
 └── 📄 README.md               # This file
 ```
-
-## 📸 Screenshots
-
-### Setup Screen
-*Full-width setup: age, category, length, and story idea.*
-
-### Storybook View
-*Full-width flipbook reading experience with page navigation.*
-
 *Quality checks run in the background; only the final story is shown.*
 
 ## 🎯 How to Use
