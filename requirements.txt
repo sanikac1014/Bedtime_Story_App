@@ -1,0 +1,23 @@
+# Core AI/ML Dependencies
+openai>=1.0.0
+langchain>=0.1.0
+langgraph>=0.1.0
+langchain-openai>=0.1.0
+langchain-community>=0.1.0
+
+# Google Gemini for image generation (google-genai SDK)
+google-genai>=1.0.0
+
+# Data validation
+pydantic>=2.0.0
+
+# Web framework
+streamlit>=1.28.0
+
+# Image processing
+pillow>=10.0.0
+
+# Environment and utilities
+python-dotenv>=1.0.0
+requests>=2.31.0
+numpy>=1.24.0,<2.0
