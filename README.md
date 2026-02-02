@@ -4,27 +4,27 @@ An intelligent AI-powered bedtime story generator for children ages 5-10. Built 
 
 **Quick demo:** Here is the quick demo to see the app: [Google Drive link](https://drive.google.com/file/d/1DaUsimEvePJTcQIEcVtAyVrvbVP3hg_T/view?usp=sharing).
 
-## ✨ Key Features
+## Key Features
 
-### 🎯 Age-Adaptive Content
+### Age-Adaptive Content
 - **5-7 years**: Simpler sentences, familiar vocabulary, gentle repetition, soothing pacing
 - **7-10 years**: Richer vocabulary, slightly more complex plots, still calm and bedtime-appropriate
 
-### 📚 Six Story Categories
+### Six Story Categories
 | Category | Description |
 |----------|-------------|
-| 🌙 Bedtime Calm | Peaceful, soothing stories about nighttime and cozy moments |
-| 🧭 Light Adventure | Gentle exploration and discovery without danger |
-| 😄 Silly & Playful | Lighthearted humor with playful characters |
-| ❤️ Friendship | Stories about bonds, kindness, and relationships |
-| 🔍 Learning & Curiosity | Educational stories that spark wonder |
-| 🎲 Surprise Me | AI chooses the best blend for your idea |
+| Bedtime Calm | Peaceful, soothing stories about nighttime and cozy moments |
+| Light Adventure | Gentle exploration and discovery without danger |
+| Silly & Playful | Lighthearted humor with playful characters |
+| Friendship | Stories about bonds, kindness, and relationships |
+| Learning & Curiosity | Educational stories that spark wonder |
+| Surprise Me | AI chooses the best blend for your idea |
 
-### 📖 Chapter-Based Stories
+### Chapter-Based Stories
 - **Short**: 5 chapters
 - **Long**: 7 chapters
 
-### 📚 Interactive Flipbook Reading Experience
+### Interactive Flipbook Reading Experience
 After generating a story, enjoy it in a beautiful book-style interface:
 - **Book Cover** with title and category
 - **Characters Page** introducing all story characters
@@ -33,7 +33,7 @@ After generating a story, enjoy it in a beautiful book-style interface:
 - **Moral Page** with the story's lesson
 - **Page Navigation** with click and keyboard (arrow keys)
 
-### 📊 Quality Assurance System
+### Quality Assurance System
 Stories are evaluated on 5 criteria (1-10 scale):
 1. **Age-Appropriate Language**
 2. **Emotional Safety**
@@ -45,7 +45,7 @@ Stories are evaluated on 5 criteria (1-10 scale):
 
 *User feedback / request changes* is not in the current flow (improvement is judge-driven); listed under *Future scope* below.
 
-## 🏗️ Architecture
+## Architecture
 
 ### System block diagram (prompts and component flow)
 
@@ -55,14 +55,14 @@ The diagram below shows the flow of **prompts** and interaction between **User**
 
 ```mermaid
 flowchart TD
-    subgraph UI["🖥️ Streamlit UI"]
+    subgraph UI["Streamlit UI"]
         A[User Input] --> B[Settings Selection]
         B --> |Age Range| B1[5-7 / 7-10]
         B --> |Category| B2[6 Categories]
         B --> |Length| B3[Short 5 ch / Long 7 ch]
     end
     
-    subgraph Workflow["⚙️ LangGraph Workflow"]
+    subgraph Workflow["LangGraph Workflow"]
         C[Classifier] --> D[Storyteller]
         D --> E[Critic]
         E --> |Score < 8.0| F[Improver]
@@ -70,7 +70,7 @@ flowchart TD
         E --> |Score >= 8.0| G[Illustrator]
     end
     
-    subgraph Output["📤 Flipbook Output"]
+    subgraph Output["Flipbook Output"]
         G --> H[Book Cover]
         H --> I[Characters Page]
         I --> J[Table of Contents]
@@ -102,7 +102,7 @@ The flipbook component:
 - Sanitizes all user content to prevent XSS
 - Falls back to tab view if rendering fails
 
-## 🚀 Quick Start
+## Quick Start
 
 ### 1. Clone and Navigate
 ```bash
@@ -134,10 +134,10 @@ streamlit run app.py
 ### 5. Access the App
 Open your browser to: http://localhost:8501
 
-## 📁 Project Structure
+## Project Structure
 
 ```
-📦 Dreamweaver Bedtime Stories
+Dreamweaver Bedtime Stories
 ├── 📄 .env                    # API key configuration
 ├── 📄 requirements.txt        # Python dependencies
 ├── 📄 app.py                  # Streamlit UI application
@@ -165,7 +165,7 @@ Open your browser to: http://localhost:8501
 ```
 *Quality checks run in the background; only the final story is shown.*
 
-## 🎯 How to Use
+## How to Use
 
 1. **Setup** (full-width screen)
    - Select age range (5-7 or 7-10 years)
@@ -184,7 +184,7 @@ Open your browser to: http://localhost:8501
 4. **Next**
    - Click "Generate Another Story" to return to setup and create a new story
 
-## 🔧 Configuration
+## Configuration
 
 ### Model Settings
 All agents use GPT-3.5-Turbo by default:
@@ -200,14 +200,14 @@ OVERALL_THRESHOLD = 8.0
 SAFETY_THRESHOLD = 9
 ```
 
-## 🛡️ Safety Features
+## Safety Features
 
 - **Content Filtering**: All stories evaluated for emotional safety
 - **Age-Appropriate Language**: Vocabulary tailored to age range
 - **Bedtime Suitability**: Stories wind down to calm endings
 - **HTML Sanitization**: User input escaped in flipbook
 
-## 📊 Technical Details
+## Technical Details
 
 ### Dependencies
 - `streamlit>=1.28.0` - Web UI framework
@@ -223,7 +223,7 @@ SAFETY_THRESHOLD = 9
 - **OpenAI GPT-3.5-Turbo**: Story generation, classification, evaluation (text-based tasks)
 - **Google Gemini**: Image generation (illustrations)
 
-## 🔮 Future Scope
+## Future Scope
 
 If I had more time, I would aim to implement the following:
 
